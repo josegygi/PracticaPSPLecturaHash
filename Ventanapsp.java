@@ -80,8 +80,10 @@ public class Ventanapsp extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        if (e.getSource() == boton){
-            if (texto0.getText().isEmpty() || texto1.getText().isEmpty()){
+        if (e.getSource() == boton)
+	{
+            if (texto0.getText().isEmpty() || texto1.getText().isEmpty())
+	    {
                 System.err.println("Faltan datos por introducir\n");
             }
             else 
