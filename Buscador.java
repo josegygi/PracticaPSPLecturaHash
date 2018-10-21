@@ -36,12 +36,14 @@ public class Buscador extends Thread{
     }
 
     //Constructores
-    public Buscador(String fichero, String ruta) {
+    public Buscador(String fichero, String ruta) 
+    {
         setFichero(fichero);
         setRuta(ruta);
     }
 
-    public Buscador() {
+    public Buscador() 
+    {
         this("","");
     }
 
@@ -70,7 +72,8 @@ public class Buscador extends Thread{
         setFichero(fichero);
 
         ProcessBuilder pb = new ProcessBuilder("cmd", "/C","powershell (Get-FileHash "+getFichero()+").hash > hash.txt");
-        try {
+        try 
+	{
             Process process = pb.start();
             process.waitFor();
             if (process.exitValue() != 0)
