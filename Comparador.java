@@ -28,12 +28,14 @@ public class Comparador extends Thread{
         this.resultado = resultado;
     }
 
-    public Comparador(String ficheroSospechoso) {
+    public Comparador(String ficheroSospechoso) 
+    {
         setFicheroSospechoso(ficheroSospechoso);
     }
 
     @Override
-    public void run() {
+    public void run() 
+    {
         ProcessBuilder pb = new ProcessBuilder("cmd", "/C","powershell (Get-FileHash "+getFicheroSospechoso()+").hash > hashtemp.txt");
         try
         {
