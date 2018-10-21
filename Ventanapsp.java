@@ -11,17 +11,20 @@ public class Ventanapsp extends JFrame implements ActionListener {
     private Container contenedor;
     private GridBagConstraints constraints;
 
-    public Ventanapsp() throws HeadlessException {
+    public Ventanapsp() throws HeadlessException 
+    {
         instancias();
         initGUI();
         acciones();
     }
 
-    private void acciones() {
+    private void acciones() 
+    {
         boton.addActionListener(this);
     }
 
-    private void instancias() {
+    private void instancias() 
+    {
         etiqueta0 = new JLabel("Ruta Fichero Puro");
         texto0 = new JTextField();
         etiqueta1 = new JLabel("Ruta Carpeta infectada");
@@ -33,7 +36,8 @@ public class Ventanapsp extends JFrame implements ActionListener {
         contenedor = getContentPane();
     }
 
-    private void initGUI() {
+    private void initGUI() 
+    {
         configuracionnesPanelCentral();
         setTitle("Formulario de resgistro");
         setVisible(true);
@@ -42,14 +46,14 @@ public class Ventanapsp extends JFrame implements ActionListener {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void configuracionnesPanelCentral() {
-
+    private void configuracionnesPanelCentral() 
+    {
         contenedor.setLayout(new BorderLayout());
         contenedor.add(configurarPanel(),BorderLayout.CENTER);
-
     }
 
-    private void configConstraints(int x, int y, int tx, int ty, double wx, double wy, int anchor, int fill, Insets i, Component c) {
+    private void configConstraints(int x, int y, int tx, int ty, double wx, double wy, int anchor, int fill, Insets i, Component c) 
+    {
         constraints.gridx = x;
         constraints.gridy = y;
         constraints.gridwidth = tx;
@@ -62,7 +66,8 @@ public class Ventanapsp extends JFrame implements ActionListener {
         panel.add(c,constraints);
     }
 
-   private JPanel configurarPanel(){
+   private JPanel configurarPanel()
+   {
        panel.setLayout(new GridBagLayout());
        configConstraints(0,0,1,1,0,0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(20,20,1,20), etiqueta0);
        configConstraints(0,1,1,1,0,0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(0,20,20,20), texto0);
@@ -73,22 +78,23 @@ public class Ventanapsp extends JFrame implements ActionListener {
    }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
+    public void actionPerformed(ActionEvent e) 
+    {
         if (e.getSource() == boton){
             if (texto0.getText().isEmpty() || texto1.getText().isEmpty()){
                 System.err.println("Faltan datos por introducir\n");
             }
-            else {
+            else 
+	    {
                 Buscador b = new Buscador(texto0.getText(),texto1.getText());
                 b.start();
-				try
-				{
-					b.join();
-				} catch (InterruptedException e1)
-				{
-					System.err.println(e1.getMessage());
-				}
+		try
+		{
+			b.join();
+		} catch (InterruptedException e1)
+		{
+			System.err.println(e1.getMessage());
+		}
             }
         }
     }
