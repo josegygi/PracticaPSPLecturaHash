@@ -100,5 +100,4 @@ public class Ventanapsp extends JFrame implements ActionListener {
             }
         }
     }
-
 }
